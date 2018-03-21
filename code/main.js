@@ -388,27 +388,46 @@ function structure(name,draw,baserate,basecost,growth) {
   }
 }
 
-function notif(value) {
-  // Floating Numbers
-
-  // Parameters
-  this.value = value;
-  this.x = 400;
-  this.y = 400;
-  this.life = 30;
-
-  this.update = function() {
-    if (this.life > 0) {
-      ctx = myGameArea.context;
-      ctx.font = "20px Consolas";
-      ctx.fillStyle = "#000000";
-      ctx.fillText("+" + this.value, this.x, this.y)
-      this.y -= 5;
-      this.life -=1;
-    }
-  }
-
+class Notif {
+	constructor(value) {
+		this.value = value;
+		ctx = myGameArea.context;
+	    this.x = myGameArea.canvas.width / 2;
+	    this.y = myGameArea.canvas.height / 2;
+		this.life = 30; 
+	}
+	update(){
+		if (this.life > 0) {
+			ctx = myGameArea.context;
+			ctx.font = "20px Consolas";
+			ctx.fillStyle = "#000000";
+			ctx.fillText("+" + this.value, this.x, this.y);
+			this.y -= 5;
+			this.life -=1;
+		}
+	}
 }
+//function notif(value) {
+//  // Floating Numbers
+//
+//  // Parameters
+//  this.value = value;
+//  this.x = 400;
+//  this.y = 400;
+//  this.life = 30;
+//
+//  this.update = function() {
+//    if (this.life > 0) {
+//      ctx = myGameArea.context;
+//      ctx.font = "20px Consolas";
+//      ctx.fillStyle = "#000000";
+//      ctx.fillText("+" + this.value, this.x, this.y)
+//      this.y -= 5;
+//      this.life -=1;
+//    }
+//  }
+//
+//}
 
 function component(width, height, color, x, y, type) {
     this.type = type;
